@@ -1,31 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, MapPin, Clock, Star, X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import pic1 from '../assets/badminton.jpg';
+import pic2 from '../assets/basketball.jpg';
+import pic3 from '../assets/football.jpg';
+
 
 const EnhancedSlideshow = () => {
   const courtImages = [
     {
-      url: 'https://images.unsplash.com/photo-1622163642998-1ea32b0bbc37?w=800&h=600&fit=crop',
+      url: pic1,
       title: 'Premium Tennis Court',
       description: 'Professional clay court with stadium lighting'
     },
     {
-      url: 'https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=800&h=600&fit=crop',
+      url: pic2,
       title: 'Basketball Arena',
       description: 'Indoor court with maple flooring'
     },
     {
-      url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
-      title: 'Badminton Center',
+      url: pic3,
+      title: 'Football Court',
       description: 'Air-conditioned multi-court facility'
     },
     {
-      url: 'https://images.unsplash.com/photo-1544787219-42dd0c45cd0c?w=800&h=600&fit=crop',
-      title: 'Football Pitch',
+      url: pic1,
+      title: 'Badminton Center',
       description: 'Artificial turf with floodlights'
     },
     {
-      url: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+      url: pic2,
       title: 'Squash Court',
       description: 'Glass-backed court with premium lighting'
     }
@@ -145,40 +149,40 @@ const HowItWorksSection = () => {
       name: "Supreme Court Sports Complex",
       distance: "0.8 km",
       rating: 4.8,
-      price: "Rs. 2,500/hour",
+      price: "Rs. 800/hour",
       availability: "Available Now",
       type: "Tennis Court",
-      location: "Bambalapitiya"
+      location: "Bambalapity"
     },
     {
       id: 2,
       name: "Ocean View Tennis Club",
       distance: "1.2 km",
       rating: 4.6,
-      price: "Rs. 3,000/hour",
+      price: "Rs. 850/hour",
       availability: "Next slot: 6:00 PM",
       type: "Tennis Court",
-      location: "Kollupitiya"
+      location: "Kollupity"
     },
     {
       id: 3,
       name: "Metropolitan Basketball Arena",
       distance: "1.5 km",
       rating: 4.7,
-      price: "Rs. 2,000/hour",
+      price: "Rs. 700/hour",
       availability: "Available Now",
       type: "Basketball Court",
-      location: "Bambalapitiya"
+      location: "Bambalapity"
     },
     {
       id: 4,
       name: "City Badminton Center",
       distance: "0.9 km",
       rating: 4.5,
-      price: "Rs. 1,500/hour",
+      price: "Rs. 800/hour",
       availability: "Available Now",
       type: "Badminton Court",
-      location: "Bambalapitiya"
+      location: "Bambalapity"
     }
   ];
 
@@ -213,7 +217,7 @@ const HowItWorksSection = () => {
   useEffect(() => {
     if (isVisible && !hasStartedDemo) {
       setHasStartedDemo(true);
-      const text = "Bambalapitiya";
+      const text = "Bambalapity";
       let index = 0;
 
       const typeInterval = setInterval(() => {
@@ -247,7 +251,8 @@ const HowItWorksSection = () => {
         <div className="modal-grid">
           <div className="modal-image">
             <img 
-              src={`https://images.unsplash.com/photo-1622163642998-1ea32b0bbc37?w=600&h=400&fit=crop`}
+              src={court.type.includes('Tennis') ? pic1 : 
+                  court.type.includes('Basketball') ? pic2 : pic3}
               alt={court.name}
               className="court-preview"
             />
@@ -279,11 +284,33 @@ const HowItWorksSection = () => {
     </div>
   );
 
+  useEffect(() => {
+    // Add smooth scroll behavior for mobile
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        const rightSection = document.querySelector('.right-section');
+        if (rightSection) {
+          const rect = rightSection.getBoundingClientRect();
+          if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            rightSection.style.opacity = '1';
+            rightSection.style.transform = 'translateY(0)';
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div 
       className="main-container" 
       ref={sectionRef}
-      style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)' }}
+      style={{ 
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+        minHeight: '100vh'  // Ensure minimum height
+      }}
     >
       <div className="main-header">
         <h2 className="main-title">How It Works</h2>
