@@ -53,7 +53,7 @@ const ContactSection = () => {
               </div>
               <div className="info-content">
                 <h3>Location</h3>
-                <p>123 Business Avenue, City</p>
+                <p>Nationwide Court Network</p>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ const ContactSection = () => {
               </div>
               <div className="info-content">
                 <h3>Phone</h3>
-                <p>(555) 123-4567</p>
+                <p>+94 72 228 8154</p>
               </div>
             </div>
 
@@ -78,7 +78,7 @@ const ContactSection = () => {
               </div>
               <div className="info-content">
                 <h3>Email</h3>
-                <p>hello@yourbrand.com</p>
+                <p>info@athlon.lk</p>
               </div>
             </div>
           </div>
