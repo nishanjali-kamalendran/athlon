@@ -285,15 +285,13 @@ const HowItWorksSection = () => {
       ref={sectionRef}
       style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)' }}
     >
-      <div className="content-wrapper">
-        <div className="left-section">
-          <div className="main-header">
-            <h2 className="main-title">How It Works</h2>
-            <p className="subtitle">
-              Find and book sports courts near you in just a few simple steps
-            </p>
-          </div>
+      <div className="main-header">
+        <h2 className="main-title">How It Works</h2>
+      </div>
 
+      <div className="content-wrapper">
+        {/* Left Section - Search Tool */}
+        <div className="left-section">
           <div className="search-results-wrapper">
             <div className="search-section">
               <div className="demo-section">
@@ -310,25 +308,25 @@ const HowItWorksSection = () => {
                           onChange={(e) => handleSearch(e.target.value)}
                         />
                       </div>
-
+                      
                       <button
                         onClick={() => handleSearch("Bambalapitiya")}
                         className="demo-button"
                       >
                         Find Court
                       </button>
-
-                      {isSearching && (
-                        <div className="loading-section">
-                          <div className="loading-content">
-                            <div className="spinner"></div>
-                            <span>Searching for courts...</span>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </div>
-                  
+
+                  {isSearching && (
+                    <div className="loading-section">
+                      <div className="loading-content">
+                        <div className="spinner"></div>
+                        <span>Searching for courts...</span>
+                      </div>
+                    </div>
+                  )}
+
                   {showResults && (
                     <div className="results-panel animate-fade-in">
                       <div className="results-card">
@@ -381,11 +379,12 @@ const HowItWorksSection = () => {
           </div>
         </div>
 
+        {/* Right Section - Slideshow */}
         <div className="right-section">
           <EnhancedSlideshow />
         </div>
       </div>
-      
+
       {showModal && selectedCourt && (
         <CourtModal 
           court={selectedCourt} 

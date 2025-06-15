@@ -1,5 +1,5 @@
 .main-container {
-  height: 100vh;
+  height: 110vh;
   padding: 16px;
   overflow: hidden;
 }
@@ -10,28 +10,23 @@
   margin: 0 auto;
   padding: 0 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* changed to equal columns */
-  gap: 20px;
-  align-items: center; /* changed to center */
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
 .left-section {
   width: 100%;
-  max-width: none; /* removed max-width constraint */
-  height: 100%;
-  overflow-y: auto;
-  padding-left: 20px; /* reduced padding */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-section {
   width: 100%;
-  height: 100%;
+  padding: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
+  align-items: flex-start;
 }
 
 .header-and-demo {
@@ -40,24 +35,16 @@
 
 .main-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: static;
-  transform: none;
 }
 
 .main-title {
-  font-size: 36px;
-  background: linear-gradient(90deg, #68758a, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 12px;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 2rem;
   text-align: center;
-  margin-left: 0;
 }
 
 .subtitle {
@@ -499,7 +486,7 @@
 
   .content-wrapper {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
     padding: 0 20px;
   }
 
@@ -516,7 +503,7 @@
   }
   
   .main-title {
-    font-size: 28px; /* reduced from 32px */
+    font-size: 2rem;
   }
 
   .subtitle {
@@ -554,6 +541,11 @@
   .left-section {
     padding-left: 0;
   }
+
+  .enhanced-slideshow {
+    height: 400px;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -581,8 +573,9 @@
 }
 
 .enhanced-slideshow {
-  height: 700px;
-  width: 100%; /* take full width */
+  height: 600px;
+  width: 100%;
+  margin-top: 40px;
   max-width: none; /* removed max-width constraint */
   margin: 0;
 }
@@ -824,7 +817,8 @@
 
   .enhanced-slideshow {
     max-width: 100%;
-    height: 600px;
+    height: 400px;
+    margin-top: 20px;
   }
 }
           
@@ -935,3 +929,4 @@
             right: 16px;
           }
         }
+           
