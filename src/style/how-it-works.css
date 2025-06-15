@@ -8,19 +8,19 @@
   height: calc(100vh - 32px);
   max-height: 900px;
   margin: 0 auto;
-  padding: 0 40px; /* increased from 20px */
+  padding: 0 40px;
   display: grid;
-  grid-template-columns: minmax(auto, 600px) 1fr;
-  gap: 20px; /* reduced from 40px to bring sections closer */
-  align-items: start;
+  grid-template-columns: 1fr 1fr; /* changed to equal columns */
+  gap: 20px;
+  align-items: center; /* changed to center */
 }
 
 .left-section {
   width: 100%;
-  max-width: 600px;
+  max-width: none; /* removed max-width constraint */
   height: 100%;
   overflow-y: auto;
-  padding-left: 40px; /* added padding */
+  padding-left: 20px; /* reduced padding */
 }
 
 .right-section {
@@ -39,9 +39,15 @@
 }
 
 .main-header {
-  text-align: left;
+  text-align: center;
   margin-bottom: 24px;
-  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  transform: none;
 }
 
 .main-title {
@@ -50,13 +56,15 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 12px;
-  margin-left: 20%;
+  text-align: center;
+  margin-left: 0;
 }
 
 .subtitle {
-  margin: 0; /* Remove auto margins */
-  font-size: 16px; /* reduced from 20px */
-  max-width: 500px; /* reduced from 600px */
+  margin: 0 auto; /* Center the subtitle */
+  font-size: 16px;
+  max-width: 500px;
+  text-align: center;
 }
 
 .steps-section {
@@ -564,30 +572,19 @@
 
 @media (max-width: 1200px) {
   .content-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr; /* maintain 50/50 split */
   }
 
   .left-section {
-    max-width: 100%;
-  }
-
-  .enhanced-slideshow {
-    max-width: 800px;
+    max-width: none;
   }
 }
 
 .enhanced-slideshow {
-  height: 700px; /* increased from 650px */
-  max-width: 1000px; /* increased from 900px */
-  width: 95%; /* added to ensure it takes up most of the space */
-  margin: 0 auto; /* changed from 25px auto */
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #011330;
+  height: 700px;
+  width: 100%; /* take full width */
+  max-width: none; /* removed max-width constraint */
+  margin: 0;
 }
 
 .slideshow-header {

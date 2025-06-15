@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, MapPin, Clock, Star, X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const EnhancedSlideshow = () => {
   const courtImages = [
@@ -30,13 +31,15 @@ const EnhancedSlideshow = () => {
     }
   ];
 
+  const slideshowRef = useRef(null);
+  const isVisible = useIntersectionObserver(slideshowRef, { threshold: 0.3 });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (isPlaying && !isTransitioning) {
+      if (isPlaying && !isTransitioning && isVisible) {
         setIsTransitioning(true);
         setCurrentIndex(current => 
           current === courtImages.length - 1 ? 0 : current + 1
@@ -46,7 +49,7 @@ const EnhancedSlideshow = () => {
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, [isPlaying, isTransitioning, courtImages.length]);
+  }, [isPlaying, isTransitioning, courtImages.length, isVisible]);
 
   const goToSlide = (index) => {
     if (isTransitioning) return;
@@ -70,7 +73,7 @@ const EnhancedSlideshow = () => {
   };
 
   return (
-    <div className="enhanced-slideshow">
+    <div className="enhanced-slideshow" ref={slideshowRef}>
       {/* Header with controls */}
       <div className="slideshow-header">
         <div className="slideshow-title">
@@ -125,6 +128,9 @@ const EnhancedSlideshow = () => {
 };
 
 const HowItWorksSection = () => {
+  const sectionRef = useRef(null);
+  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.3 });
+  const [hasStartedDemo, setHasStartedDemo] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
@@ -205,22 +211,27 @@ const HowItWorksSection = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    if (isVisible && !hasStartedDemo) {
+      setHasStartedDemo(true);
       const text = "Bambalapitiya";
       let index = 0;
+
       const typeInterval = setInterval(() => {
         if (index <= text.length) {
           setSearchTerm(text.slice(0, index));
           index++;
-        } else {
-          clearInterval(typeInterval);
-          handleSearch(text);
+          
+          // When typing is complete, trigger the search
+          if (index > text.length) {
+            clearInterval(typeInterval);
+            simulateSearch(text);
+          }
         }
       }, 100);
-    }, 1000);
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearInterval(typeInterval);
+    }
+  }, [isVisible]);
 
   const handleCourtClick = (court) => {
     setSelectedCourt(court);
@@ -269,7 +280,11 @@ const HowItWorksSection = () => {
   );
 
   return (
-    <div className="main-container" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)' }}>
+    <div 
+      className="main-container" 
+      ref={sectionRef}
+      style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)' }}
+    >
       <div className="content-wrapper">
         <div className="left-section">
           <div className="main-header">

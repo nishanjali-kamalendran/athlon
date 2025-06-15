@@ -46,6 +46,7 @@
 /* Logo Styles */
 .navbar-logo {
   position: relative;
+  margin-top: 25px;
   z-index: 10;
 }
 
@@ -57,7 +58,7 @@
 }
 
 .logo-text {
-  font-size: 1.75rem;
+  font-size: 2rem;  /* Increased from 1.75rem */
   font-weight: 800;
   background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
   -webkit-background-clip: text;
@@ -93,7 +94,7 @@
 }
 
 .logo-image {
-  height: 32px;
+  height: 36px;  /* Increased from 32px */
   width: auto;
   position: relative;
   z-index: 2;
@@ -481,11 +482,11 @@
   }
   
   .logo-text {
-    font-size: 1.35rem;
+    font-size: 1.5rem;  /* Increased from 1.35rem */
   }
 
   .logo-image {
-    height: 28px;
+    height: 32px;  /* Increased from 28px */
   }
 }
 

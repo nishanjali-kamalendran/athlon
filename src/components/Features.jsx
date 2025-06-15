@@ -62,15 +62,15 @@ const Features = () => {
 
   return (
     <div className="live-demo-container">
+      <h2 className="features-heading">Features</h2>
       
       <div className="features-grid">
-        {features.map((feature, index) => {
+        {features.map((feature) => {
           const IconComponent = feature.icon;
           return (
             <div 
               key={feature.id} 
               className={`feature-card ${feature.accentColor}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="feature-header">
                 <div className={`icon-container ${feature.color}`}>
@@ -81,13 +81,6 @@ const Features = () => {
               
               <h3 className="feature-title">{feature.title}</h3>
               <p className="feature-description">{feature.description}</p>
-              
-              <div className="feature-footer">
-                <button className="demo-button">
-                  Try Demo
-                  <div className="button-glow"></div>
-                </button>
-              </div>
             </div>
           );
         })}
