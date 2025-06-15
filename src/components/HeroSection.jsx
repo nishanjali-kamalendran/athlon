@@ -178,14 +178,18 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right side - Enhanced Content */}
+        {/* Right side - Simplified Content */}
         <div className="hero-right">
           <div className="hero-content">
             <h1 className="hero-title">ATHLON</h1>
             <p className="hero-subtitle">Reserve Your Elite Slot</p>
             
-            {/* Enhanced Countdown Timer */}
-            <div className="countdown-container">
+            <div className="sports-platform-text">
+              <h2 className="platform-title">Sports Booking Platform</h2>
+              <p className="platform-description">Book sports facilities instantly in Sri Lanka.</p>
+            </div>
+            
+            <div className="countdown-container white-countdown">
               <div className="countdown-title">Launching In</div>
               <div className="countdown-timer">
                 <div className="time-unit">
@@ -211,11 +215,12 @@ const HeroSection = () => {
             </div>
 
             <button className="hero-cta" onClick={handleCTAClick}>
-              ↓
+              >
             </button>
           </div>
         </div>
       </div>
+      
     </section>
   );
 };

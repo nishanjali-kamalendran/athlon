@@ -49,44 +49,656 @@
   opacity: 1;
 }
 
-/* Right Side - Enhanced Content */
+/* Right Side - Simplified Content */
 .hero-right {
-  flex: 1;
+  flex: 0.8;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 2rem;
   position: relative;
-  margin-left: -25%;  /* Increased overlap */
-  z-index: 2;  /* Added to ensure text stays above SVG */
-}
-
-.hero-right::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 120%;
-  height: 140%;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  margin-left: -15%;
+  z-index: 2;
 }
 
 .hero-content {
-  max-width: 700px;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateX(-50px);  /* Changed from 50px */
-  animation: slideInLeft 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
-  text-align: left;  /* Changed from right */
-  position: relative;
-  z-index: 1;
+  max-width: 400px;
+  padding: 0;
 }
 
-@keyframes slideInLeft {  /* Changed from slideInRight */
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  margin: 0 0 1rem 0;
+}
+
+.sports-platform-text {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.platform-title {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  margin: 0 0 0.3rem 0;
+}
+
+.platform-description {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  line-height: 1.3;
+}
+
+.countdown-container {
+  margin: 0.8rem 0;
+  padding: 0;
+}
+
+.countdown-title {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.time-unit {
+  min-width: 40px;
+  padding: 0.3rem;
+}
+
+.time-number {
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+}
+
+.time-label {
+  font-size: 0.5rem;
+}
+
+.hero-cta {
+  margin-top: 1rem;
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .hero-container {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-left {
+    margin-left: -3%;
+    margin-top: 5vh; /* Maintain SVG position */
+  }
+  
+  .glass-container {
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-left,
+  .hero-right {
+    flex: none;
+    width: 100%;
+  }
+  
+  .hero-left {
+    order: 2;
+    min-height: 300px;
+    margin-top: 2vh; /* Adjust for mobile */
+  }
+  
+  .hero-right {
+    order: 1;
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .glass-container {
+    height: 70vh;
+    max-width: 90%;
+  }
+  
+  .hero-content {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .countdown-timer {
+    gap: 0.5rem;
+  }
+  
+  .time-separator {
+    margin: 0 0.2rem;
+  }
+  
+  .countdown-container {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1rem;
+  }
+  
+  .glass-container {
+    height: 75vh;
+    max-width: 95%;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+  
+  .countdown-timer {
+    flex-direction: row;
+    gap: 0.3rem;
+  }
+  
+  .time-separator {
+    display: block;
+    margin: 0 0.1rem;
+  }
+  
+  .animation-container {
+    max-width: 280px;
+  }
+  
+  .countdown-container {
+    padding: 1rem;
+  }
+  
+  .time-unit {
+    padding: 0.6rem 0.2rem;
+    min-width: 40px;
+  }
+  
+  .sports-platform-text {
+    margin: 0.8rem 0 1.2rem 0;
+  }
+  
+  .platform-title {
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
+  }
+  
+  .platform-description {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+  }
+}
+
+/* Loading State */
+.hero-section:not(.loaded) .animation-container {
+  opacity: 0;
+}
+
+.hero-section:not(.loaded) .glass-container {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .animation-container,
+  .hero-cta,
+  .scroll-button,
+  .time-separator,
+  .hero-title,
+  .time-number,
+  .countdown-container::before,
+  .glass-container,
+  .glass-container::before {
+    animation: none;
+    transition: none;
+  }
+  
+  .glass-container {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .animation-container {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .hero-title {
+    background: #ffffff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .glass-container {
+    border: 2px solid #ffffff;
+  }
+  
+  .countdown-container {
+    border: 2px solid #ffffff;
+  }
+}
+  
+
+.time-number {
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  background: linear-gradient(135deg, 
+    #ffffff 0%, 
+    #e1e7ff 25%, 
+    #00c8ff 75%, 
+    #0099cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 4px 20px rgba(0, 200, 255, 0.3);
+  animation: numberPulse 2s ease-in-out infinite alternate;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+@keyframes numberPulse {
+  0% {
+    text-shadow: 0 4px 20px rgba(0, 200, 255, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 0 6px 30px rgba(0, 200, 255, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+.time-label {
+  font-size: 0.55rem;
+  color: #c4d3ff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.time-separator {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: #ffffff;
+  font-weight: 700;
+  margin: 0 0.1rem;
+  padding-bottom: 1rem;
+  animation: separatorBlink 2s infinite;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes separatorBlink {
+  0%, 50% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  51%, 100% {
+    opacity: 0.3;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Enhanced CTA Button */
+.hero-cta {
+  background: linear-gradient(135deg, 
+    #ffffff 0%, 
+    #f0f4ff 25%, 
+    #98a8af 75%, 
+    #ffffff 100%);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 8px 30px rgba(255, 255, 255, 0.4),
+    0 4px 15px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transform: rotate(90deg);
+  align-self: center;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.hero-cta::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%);
+  border-radius: 48px;
+  pointer-events: none;
+}
+
+.hero-cta:hover {
+  transform: translateY(-5px) scale(1.08) rotate(90deg);
+  box-shadow: 
+    0 15px 50px rgba(0, 153, 204, 0.6),
+    0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-cta:active {
+  transform: translateY(-2px) scale(1.05) rotate(90deg);
+}
+
+/* Remove or comment out the entire .scroll-button section and its animations */
+.scroll-button,
+.mouse,
+@keyframes float,
+@keyframes scroll {
+  display: none;
+}
+
+/* Additional styles for the new sports platform text */
+.sports-platform-text {
+  margin: 0.5rem 0 1rem 0;
+  padding: 0;
+}
+
+.platform-title {
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.platform-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.platform-description {
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  line-height: 1.3;
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-container {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-left {
+    margin-left: -3%;
+    margin-top: 5vh; /* Maintain SVG position */
+  }
+  
+  .glass-container {
+    max-width: 600px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  .hero-left,
+  .hero-right {
+    flex: none;
+    width: 100%;
+  }
+  
+  .hero-left {
+    order: 2;
+    min-height: 300px;
+    margin-top: 2vh; /* Adjust for mobile */
+  }
+  
+  .hero-right {
+    order: 1;
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .glass-container {
+    height: 60vh;
+    max-width: 85%;
+  }
+  
+  .hero-content {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .countdown-timer {
+    gap: 0.5rem;
+  }
+  
+  .time-separator {
+    margin: 0 0.2rem;
+  }
+  
+  .countdown-container {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding: 1rem;
+  }
+  
+  .glass-container {
+    height: 75vh;
+    max-width: 95%;
+  }
+  
+  .hero-content {
+    padding: 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+  
+  .countdown-timer {
+    flex-direction: row;
+    gap: 0.3rem;
+  }
+  
+  .time-separator {
+    display: block;
+    margin: 0 0.1rem;
+  }
+  
+  .animation-container {
+    max-width: 280px;
+  }
+  
+  .countdown-container {
+    padding: 1rem;
+  }
+  
+  .time-unit {
+    padding: 0.6rem 0.2rem;
+    min-width: 40px;
+  }
+  
+  .sports-platform-text {
+    margin: 0.8rem 0 1.2rem 0;
+  }
+  
+  .platform-title {
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
+  }
+  
+  .platform-description {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+  }
+}
+
+/* Loading State */
+.hero-section:not(.loaded) .animation-container {
+  opacity: 0;
+}
+
+.hero-section:not(.loaded) .glass-container {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .animation-container,
+  .hero-cta,
+  .scroll-button,
+  .time-separator,
+  .hero-title,
+  .time-number,
+  .countdown-container::before,
+  .glass-container,
+  .glass-container::before {
+    animation: none;
+    transition: none;
+  }
+  
+  .glass-container {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .animation-container {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .hero-title {
+    background: #ffffff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .glass-container {
+    border: 2px solid #ffffff;
+  }
+  
+  .countdown-container {
+    border: 2px solid #ffffff;
+  }
+}
+  
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.hero-content {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+@keyframes slideInLeft {
   to {
     opacity: 1;
     transform: translateX(0);
@@ -95,10 +707,10 @@
 
 /* Enhanced Typography */
 .hero-title {
-  font-size: clamp(4rem, 11vw, 8rem); /* Reduced from clamp(5rem, 13vw, 10rem) */
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
   letter-spacing: 0.15em;
-  margin: 0 0 2rem 0;
+  margin: 0 0 1rem 0;
   background: linear-gradient(135deg, 
     #ffffff 0%, 
     #f8f9ff 25%, 
@@ -155,10 +767,10 @@
 }
 
 .hero-subtitle {
-  font-size: clamp(1.8rem, 4vw, 2.8rem); /* Reduced from clamp(2rem, 4.5vw, 3.2rem) */
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 300;
   color: #c4d3ff;
-  margin: 0 0 4rem 0;
+  margin: 0 0 1.5rem 0;
   letter-spacing: 0.08em;
   opacity: 0.95;
   text-transform: uppercase;
@@ -168,8 +780,8 @@
 .hero-subtitle::after {
   content: '';
   position: absolute;
-  bottom: -1rem;
-  left: 0;  /* Changed from right */
+  bottom: -0.5rem;
+  left: 0;
   right: auto;
   width: 60%;
   height: 2px;
@@ -190,16 +802,15 @@
 
 /* Enhanced Countdown Timer */
 .countdown-container {
-  margin: 2rem 0;
-  padding: 1.2rem;
-  max-width: 380px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -218,19 +829,10 @@
   animation: shimmer 4s ease-in-out infinite;
 }
 
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
 .countdown-title {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -241,7 +843,7 @@
 .countdown-title::after {
   content: '';
   position: absolute;
-  bottom: -1rem;
+  bottom: -0.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
@@ -263,9 +865,9 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 0.5rem 0.2rem;
-  min-width: 60px;
-  border-radius: 16px;
+  padding: 0.4rem 0.2rem;
+  min-width: 50px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
@@ -278,7 +880,7 @@
 }
 
 .time-number {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   font-weight: 800;
   color: #ffffff;
   background: linear-gradient(135deg, 
@@ -308,7 +910,7 @@
 }
 
 .time-label {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: #c4d3ff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -316,7 +918,7 @@
 }
 
 .time-separator {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-size: clamp(1rem, 2vw, 1.4rem);
   color: #ffffff;
   font-weight: 700;
   margin: 0 0.1rem;
@@ -344,26 +946,27 @@
     #2cbffd 75%, 
     #0099cc 100%);
   border: none;
-  padding: 1.2rem 2rem; /* Reduced padding */
-  border-radius: 60px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
   color: #ffffff;
-  font-size: 1.5rem; /* Reduced from 2rem */
+  font-size: 1.2rem;
   font-weight: 800;
   cursor: pointer;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 
     0 8px 30px rgba(0, 153, 204, 0.4),
     0 4px 15px rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  min-width: 60px; /* Reduced from 120px */
-  min-height: 60px; /* Reduced from 80px */
+  min-width: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  transform: rotate(90deg); /* Rotate arrow to point down */
+  transform: rotate(90deg);
+  align-self: center;
 }
 
 .hero-cta::before {
@@ -390,12 +993,12 @@
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.1) 0%, 
     transparent 50%);
-  border-radius: 58px;
+  border-radius: 48px;
   pointer-events: none;
 }
 
 .hero-cta:hover {
-  transform: translateY(-5px) scale(1.08);
+  transform: translateY(-5px) scale(1.08) rotate(90deg);
   box-shadow: 
     0 15px 50px rgba(0, 153, 204, 0.6),
     0 8px 25px rgba(255, 255, 255, 0.2);
@@ -406,7 +1009,7 @@
 }
 
 .hero-cta:active {
-  transform: translateY(-2px) scale(1.05);
+  transform: translateY(-2px) scale(1.05) rotate(90deg);
 }
 
 /* Remove or comment out the entire .scroll-button section and its animations */
@@ -415,6 +1018,63 @@
 @keyframes float,
 @keyframes scroll {
   display: none;
+}
+
+/* Additional styles for the new sports platform text */
+.sports-platform-text {
+  margin: 1rem 0 1.5rem 0;
+  padding: 0;
+}
+
+.platform-title {
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.8rem 0;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.platform-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.platform-description {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* White countdown styling */
+.white-countdown .countdown-title {
+  color: #ffffff;
+}
+
+.white-countdown .time-number {
+  color: #ffffff;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #ffffff;
+  background-clip: initial;
+  text-shadow: none;
+}
+
+.white-countdown .time-label {
+  color: #ffffff;
+}
+
+.white-countdown .time-separator {
+  color: #ffffff;
+  text-shadow: none;
 }
 
 /* Responsive Design */
@@ -426,11 +1086,15 @@
   
   .hero-left {
     margin-left: -3%;
-    margin-top: 5vh; /* Maintain SVG position */
+    margin-top: 5vh;
+  }
+  
+  .glass-container {
+    max-width: 600px;
   }
   
   .hero-title {
-    font-size: clamp(3.5rem, 10vw, 7rem); /* Reduced from clamp(4rem, 11vw, 8rem) */
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
   }
 }
 
@@ -453,7 +1117,7 @@
   .hero-left {
     order: 2;
     min-height: 300px;
-    margin-top: 2vh; /* Adjust for mobile */
+    margin-top: 2vh;
   }
   
   .hero-right {
@@ -462,30 +1126,36 @@
     justify-content: center;
   }
   
+  .glass-container {
+    height: 70vh;
+    max-width: 90%;
+  }
+  
   .hero-content {
     text-align: center;
+    padding: 1.5rem;
   }
   
   .hero-title {
-    font-size: clamp(3.5rem, 13vw, 7rem);
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
   }
   
   .hero-subtitle {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
   
   .countdown-timer {
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
   
   .time-separator {
-    margin: 0 0.3rem;
+    margin: 0 0.2rem;
   }
   
   .countdown-container {
-    padding: 2rem;
-    margin: 2rem 0;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
   }
 }
 
@@ -494,21 +1164,27 @@
     padding: 1rem;
   }
   
+  .glass-container {
+    height: 75vh;
+    max-width: 95%;
+  }
+  
   .hero-content {
     padding: 1rem;
   }
   
   .hero-title {
-    font-size: clamp(2.5rem, 10vw, 4.5rem);
+    font-size: clamp(2rem, 7vw, 3.5rem);
   }
   
   .countdown-timer {
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
   
   .time-separator {
     display: block;
+    margin: 0 0.1rem;
   }
   
   .animation-container {
@@ -516,11 +1192,24 @@
   }
   
   .countdown-container {
-    padding: 1.5rem;
+    padding: 1rem;
   }
   
   .time-unit {
-    padding: 0.8rem 0.3rem;
+    padding: 0.6rem 0.2rem;
+    min-width: 40px;
+  }
+  
+  .sports-platform-text {
+    margin: 0.8rem 0 1.2rem 0;
+  }
+  
+  .platform-title {
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
+  }
+  
+  .platform-description {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
   }
 }
 
@@ -529,7 +1218,7 @@
   opacity: 0;
 }
 
-.hero-section:not(.loaded) .hero-content {
+.hero-section:not(.loaded) .glass-container {
   animation-play-state: paused;
 }
 
@@ -542,12 +1231,14 @@
   .time-separator,
   .hero-title,
   .time-number,
-  .countdown-container::before {
+  .countdown-container::before,
+  .glass-container,
+  .glass-container::before {
     animation: none;
     transition: none;
   }
   
-  .hero-content {
+  .glass-container {
     opacity: 1;
     transform: none;
   }
@@ -566,7 +1257,83 @@
     -webkit-text-fill-color: transparent;
   }
   
+  .glass-container {
+    border: 2px solid #ffffff;
+  }
+  
   .countdown-container {
     border: 2px solid #ffffff;
   }
 }
+          
+
+        .platform-title {
+          font-size: clamp(1.5rem, 3vw, 2.2rem);
+          font-weight: 700;
+          color: #ffffff;
+          margin: 0 0 1rem 0;
+          letter-spacing: 0.05em;
+          line-height: 1.2;
+        }
+
+        .platform-subtitle {
+          font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+          font-weight: 600;
+          color: #ffffff;
+          margin: 0 0 1.5rem 0;
+          letter-spacing: 0.03em;
+          line-height: 1.3;
+        }
+
+        .platform-description {
+          font-size: clamp(1rem, 2vw, 1.3rem);
+          font-weight: 400;
+          color: #ffffff;
+          margin: 0;
+          letter-spacing: 0.02em;
+          line-height: 1.5;
+          opacity: 0.9;
+        }
+
+        /* White countdown styling */
+        .white-countdown .countdown-title {
+          color: #ffffff;
+        }
+
+        .white-countdown .time-number {
+          color: #ffffff;
+          background: none;
+          -webkit-background-clip: initial;
+          -webkit-text-fill-color: #ffffff;
+          background-clip: initial;
+          text-shadow: none;
+        }
+
+        .white-countdown .time-label {
+          color: #ffffff;
+        }
+
+        .white-countdown .time-separator {
+          color: #ffffff;
+          text-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+          .sports-platform-text {
+            margin: 1.5rem 0 2.5rem 0;
+            padding: 1rem 0;
+          }
+
+          .platform-title {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+          }
+
+          .platform-subtitle {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+          }
+
+          .platform-description {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+          }
+        }
+      
