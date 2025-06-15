@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import HowItWorksSection from './components/HowItWorksSection';
 import Features from './components/Features.jsx';
 import ContactSection from './components/ContactSection';
+import Suggestions from './components/Suggestions.jsx';
 //import Price from './components/Price.jsx';
 import Footer from './components/Footer';
 import Download from './components/Download.jsx';
@@ -40,6 +41,7 @@ const App = () => {
                 activeSection={activeSection}
                 setActiveSection={setActiveSection}
             />
+            <Suggestions/>
             <Features />
             
             <Download />
