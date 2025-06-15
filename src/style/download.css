@@ -1,0 +1,171 @@
+/* Download Section Styles */
+.download-section {
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.download-container {
+  width: 50%;
+  max-width: 600px;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.download-content {
+  width: 100%;
+}
+
+/* Typography */
+.download-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #0a1b3d;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.download-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #64748b;
+  margin: 0 0 3rem 0;
+  font-weight: 400;
+}
+
+/* Download Buttons Container */
+.download-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Download Button Base Styles */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  height: 60px;
+  border: 1px solid transparent;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+/* iOS Button */
+.ios-btn {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.ios-btn:hover {
+  background: #1a1a1a;
+}
+
+/* Android Button */
+.android-btn {
+  background: #0a1b3d;
+  color: #ffffff;
+  border-color: #0a1b3d;
+}
+
+.android-btn:hover {
+  background: #1e3a5f;
+}
+
+/* Button Content Layout */
+.btn-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.btn-small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.btn-large {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .download-container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .download-container {
+    width: 80%;
+    padding: 0 1rem;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .download-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-container {
+    width: 90%;
+  }
+  
+  .download-section {
+    padding: 3rem 0;
+  }
+  
+  .download-subtitle {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .download-btn {
+    transition: none;
+  }
+  
+  .download-btn:hover {
+    transform: none;
+  }
+}

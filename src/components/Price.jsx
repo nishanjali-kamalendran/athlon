@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const Price = () => {
   const [hoveredPlan, setHoveredPlan] = useState(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
 
   const plans = [
     {
@@ -75,6 +85,8 @@ const Price = () => {
               className={`pricing-card ${plan.popular ? 'popular' : ''} ${
                 hoveredPlan === index ? 'hovered' : ''
               }`}
+              data-aos="fade-up"
+              data-aos-delay={index * 200}
               onMouseEnter={() => setHoveredPlan(index)}
               onMouseLeave={() => setHoveredPlan(null)}
             >

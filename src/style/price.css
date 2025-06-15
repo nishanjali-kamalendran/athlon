@@ -236,6 +236,17 @@
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
+/* Animation Styles */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .pricing-container {

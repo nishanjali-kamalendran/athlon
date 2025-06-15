@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Calendar, MapPin, Users, Brain, Search, Filter } from 'lucide-react';
 
 
 const Features = () => {
+  const featuresRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('features-visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const features = featuresRef.current;
+    if (features) {
+      observer.observe(features);
+    }
+
+    return () => {
+      if (features) {
+        observer.unobserve(features);
+      }
+    };
+  }, []);
+
   const features = [
     {
       id: 'real-time',
@@ -64,13 +90,14 @@ const Features = () => {
     <div className="live-demo-container">
       <h2 className="features-heading">Features</h2>
       
-      <div className="features-grid">
-        {features.map((feature) => {
+      <div className="features-grid" ref={featuresRef}>
+        {features.map((feature, index) => {
           const IconComponent = feature.icon;
           return (
             <div 
               key={feature.id} 
               className={`feature-card ${feature.accentColor}`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="feature-header">
                 <div className={`icon-container ${feature.color}`}>
