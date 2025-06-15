@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// Add import for logo image
+import logo from '../assets/texttrans.png';
 
 
 const Navigation = () => {
@@ -27,14 +29,9 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { 
-      name: 'Services', 
-      href: '#services',
-      dropdown: ['Web Design', 'Development', 'UI/UX Design', 'Consulting']
-    },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'About', href: '#about' },
+    { name: 'About', href: '/about' },
+    { name: 'Features', href: '#features' },
+    { name: 'Demo', href: '/how-it-works' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -53,7 +50,7 @@ const Navigation = () => {
         {/* Logo */}
         <div className="navbar-logo">
           <a href="#home" className="logo-link">
-            <span className="logo-text">Athlon</span>
+            <img src={logo} alt="Brand Logo" className="logo-image" />
             <div className="logo-glow"></div>
           </a>
         </div>
@@ -101,7 +98,7 @@ const Navigation = () => {
         {/* CTA Button */}
         <div className="navbar-cta">
           <button className="cta-button">
-            <span className="cta-text">Get Started</span>
+            <span className="cta-text">Coming Soon</span>
             <div className="cta-glow"></div>
             <div className="cta-ripple"></div>
           </button>
