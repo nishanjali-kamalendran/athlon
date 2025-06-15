@@ -1,0 +1,327 @@
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  right: 10%;  
+  left: auto;  
+  transform: translateY(-50%);
+  z-index: 10;
+  max-width: 500px;
+  text-align: right;  
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.hero-cta {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(238, 90, 36, 0.4);
+  background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+}
+
+.animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-20%);  /* Changed from 20% to -20% to move SVG left */
+}
+
+/* SVG Styling */
+.animation-container svg {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  max-width: 800px;
+  max-height: 600px;
+}
+
+/* Soccer Ball 1 Styles */
+#soccer1 {
+  opacity: 1;
+}
+
+.soccer1_fill polygon,
+.soccer1_fill polyline {
+  fill: #ffffff;
+  opacity: 0.3;
+}
+
+.soccer1_line polygon,
+.soccer1_line path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+
+.soccer1_extra-line polyline,
+.soccer1_extra-line line,
+.soccer1_extra-line path,
+.soccer1_extra-line polygon {
+  fill: none;
+  stroke: #ffffff;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+
+.soccer1ball g polygon {
+  fill: #ffffff;
+}
+
+.soccer1ball-line polygon {
+  fill: none;
+  stroke: #ffffff;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+
+/* Scroll Button */
+.scroll-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  position: relative;
+}
+
+.mouse::before {
+  content: '';
+  width: 4px;
+  height: 8px;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8px;
+  border-radius: 2px;
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    top: 8px;
+  }
+  100% {
+    opacity: 0;
+    top: 24px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .animation-container svg {
+    width: 90%;
+    height: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    right: 5%;
+    max-width: 400px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-cta {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .animation-container svg {
+    width: 100%;
+    height: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .hero-cta {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .hero-content {
+    position: relative;
+    top: auto;
+    right: auto;  /* Changed from left: auto */
+    transform: none;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 2rem;
+  }
+  
+  .animation-container {
+    z-index: -1;
+  }
+  
+  .scroll-button {
+    bottom: 20px;
+  }
+}
+
+/* Animation utilities */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Loading state */
+
+/* Performance optimizations */
+.animation-container svg * {
+  vector-effect: non-scaling-stroke;
+  will-change: transform, opacity;
+}
+
+.animation-container svg {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth transitions */
+.hero-section * {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Loading animation */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 5;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide loading spinner once animations start */
+.animation-container:not(:empty) + .hero-section::after,
+.hero-section.loaded::after {
+  display: none;
+}
+
+/* Additional visual effects */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Enhanced SVG styling for better visibility */
+.animation-container svg {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+/* Custom scrollbar for hero section if needed */
+.hero-section::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-section {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
