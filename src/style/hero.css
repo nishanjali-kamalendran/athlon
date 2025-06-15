@@ -572,12 +572,14 @@
   /* Animation section appears second and takes full viewport */
   .hero-left {
     order: 2;
-    min-height: 100vh;
-    height: 100vh;
+    min-height: 100vh !important;
+    height: 100vh !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding: 0;
   }
   
   .hero-content {
@@ -611,18 +613,19 @@
   
   .animation-container {
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 85vh;
   }
   
   .animation-container svg {
     width: 90vw;
-    height: 70vh;
+    height: 75vh;
     max-width: 90vw;
-    max-height: 70vh;
+    max-height: 75vh;
     object-fit: contain;
   }
 }
@@ -643,8 +646,11 @@
   
   /* Animation section - full viewport height */
   .hero-left {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding: 0;
   }
   
   .hero-content {
@@ -667,15 +673,19 @@
   }
   
   .animation-container {
-    height: 90vh;
+    height: 95vh;
     width: 100%;
+    max-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .animation-container svg {
     width: 95vw;
-    height: 80vh;
+    height: 85vh;
     max-width: 95vw;
-    max-height: 80vh;
+    max-height: 85vh;
   }
   
   .countdown-container {
@@ -715,9 +725,22 @@
     margin: 1rem 0;
   }
   
+  .hero-left {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  .animation-container {
+    height: 98vh;
+    max-height: 98vh;
+  }
+  
   .animation-container svg {
     width: 98vw;
-    height: 75vh;
+    height: 88vh;
+    max-height: 88vh;
   }
   
   .platform-title {
