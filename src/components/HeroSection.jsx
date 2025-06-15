@@ -158,6 +158,16 @@ const HeroSection = () => {
     };
   }, []);
 
+  const formatTime = (time) => {
+    return time.toString().padStart(2, '0');
+  };
+
+  const handleCTAClick = () => {
+    // Add your CTA functionality here
+    console.log('CTA clicked - Reserve slot functionality');
+    // Example: scroll to next section, open modal, navigate to form, etc.
+  };
+
   return (
     <section className="hero-section" ref={containerRef}>
       <div className="hero-container">
@@ -168,45 +178,43 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right side - Content */}
+        {/* Right side - Enhanced Content */}
         <div className="hero-right">
           <div className="hero-content">
             <h1 className="hero-title">ATHLON</h1>
-            <p className="hero-subtitle">Reserve Your Slot</p>
+            <p className="hero-subtitle">Reserve Your Elite Slot</p>
             
-            {/* Countdown Timer */}
+            {/* Enhanced Countdown Timer */}
             <div className="countdown-container">
               <div className="countdown-title">Launching In</div>
               <div className="countdown-timer">
                 <div className="time-unit">
-                  <span className="time-number">{timeLeft.days.toString().padStart(2, '0')}</span>
+                  <span className="time-number">{formatTime(timeLeft.days)}</span>
                   <span className="time-label">Days</span>
                 </div>
                 <div className="time-separator">:</div>
                 <div className="time-unit">
-                  <span className="time-number">{timeLeft.hours.toString().padStart(2, '0')}</span>
+                  <span className="time-number">{formatTime(timeLeft.hours)}</span>
                   <span className="time-label">Hours</span>
                 </div>
                 <div className="time-separator">:</div>
                 <div className="time-unit">
-                  <span className="time-number">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+                  <span className="time-number">{formatTime(timeLeft.minutes)}</span>
                   <span className="time-label">Minutes</span>
                 </div>
                 <div className="time-separator">:</div>
                 <div className="time-unit">
-                  <span className="time-number">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+                  <span className="time-number">{formatTime(timeLeft.seconds)}</span>
                   <span className="time-label">Seconds</span>
                 </div>
               </div>
             </div>
 
-            <button className="hero-cta">^</button>
+            <button className="hero-cta" onClick={handleCTAClick}>
+              ↓
+            </button>
           </div>
         </div>
-      </div>
-
-      <div className="scroll-button">
-        <div className="mouse"></div>
       </div>
     </section>
   );
