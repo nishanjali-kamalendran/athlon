@@ -1,17 +1,16 @@
-
-
-        .about-container {
+.about-container {
             min-height: 100vh;
             align-items: center;
         }
 
         .about-hero {
-            left: 7%;
-            height: 40vh;
+            left: 0;
+            width: 100%;
+            height: 40vh; /* reduced from 60vh */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem 5rem;
+            padding: 1rem 5rem; /* reduced from 3rem */
             position: relative;
             overflow: hidden;
         }
@@ -33,7 +32,7 @@
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
-            padding-bottom: 2rem;
+            padding-bottom: 1rem; /* reduced from 2rem */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -46,14 +45,32 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
             text-align: center;
+            white-space: pre;
         }
 
         .hero-accent {
-            background: linear-gradient(135deg, #03177d 0%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
             position: relative;
+        }
+
+        .typing-text {
+            color: #66ccff; /* Brighter light blue */
+            font-weight: 900;
+            font-size: 3.8rem;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.5); /* Subtle outline */
+            position: relative;
+        }
+
+        .cursor {
+            display: inline-block;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            color: #66ccff;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .hero-description {
@@ -95,7 +112,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #03177d 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #00aad9 0%, #ffffff 100%);
         }
 
         .about-section:hover {
@@ -220,8 +237,8 @@
             }
 
             .about-hero {
-                height: 35vh;
-                padding: 2rem 1rem;
+                height: 30vh; /* reduced from 35vh */
+                padding: 1rem; /* reduced from 2rem */
             }
 
             .about-content {
@@ -251,6 +268,10 @@
                 margin: 0 auto;
                 padding: 0 1rem;
             }
+
+            .typing-text, .cursor {
+                font-size: 2.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -270,5 +291,9 @@
             .hero-content {
                 margin: 0 auto;
                 padding: 0 0.5rem;
+            }
+
+            .typing-text, .cursor {
+                font-size: 2.3rem;
             }
         }

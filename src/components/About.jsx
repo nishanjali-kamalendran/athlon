@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 const About = () => {
+  const [text, setText] = useState('');
+  const fullText = 'What is ATHLON?';
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        setTimeout(() => {
+          currentIndex = 0;
+          setText('');
+        }, 2000);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   const sections = [
     {
       id: 'vision',
@@ -24,7 +44,7 @@ const About = () => {
     <div className="about-container">
       <div className="about-hero">
         <div className="hero-content">
-          <h1 className="hero-title">What is <span className="hero-accent">ATHLON</span>?</h1>
+          <h1 className="hero-title">{text}<span className="cursor">|</span></h1>
           <p className="hero-description">
             Athlon is your ultimate sports facility booking platform, designed to bridge the gap between 
             sports enthusiasts and quality venues. We simplify the process of finding and booking sports 
@@ -50,4 +70,3 @@ const About = () => {
 };
 
 export default About;
-     
