@@ -290,10 +290,12 @@ const HowItWorksSection = () => {
         const rightSection = document.querySelector('.right-section');
         if (rightSection) {
           const rect = rightSection.getBoundingClientRect();
-          const triggerPoint = window.innerHeight * 0.75; // 75% of viewport height
+          const triggerPoint = window.innerHeight * 0.8; // Increased to 80% of viewport height
           
           if (rect.top <= triggerPoint) {
             rightSection.classList.add('visible');
+          } else {
+            rightSection.classList.remove('visible');
           }
         }
       }
