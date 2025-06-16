@@ -14,7 +14,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 4rem 5rem; /* changed padding */
+  padding: 4rem 5rem; /* Base padding */
   background: linear-gradient(135deg, #010b1c 0%, #010b1c 50%, #010b1c 100%);
   overflow: hidden;
   animation: fadeIn 0.8s ease-out forwards;
@@ -33,7 +33,7 @@
 
 .suggestions-container {
   max-width: 1400px;
-  margin: 0 5rem; /* changed margin */
+  margin: 0 5rem; /* Base margin */
   padding: 0 2rem;
   position: relative;
   z-index: 1;
@@ -560,8 +560,12 @@
 }
 
 @media (max-width: 768px) {
+  .suggestions-section {
+    padding: 4rem 1rem; /* Reduced padding on mobile */
+  }
+
   .suggestions-container {
-    padding: 0 1rem;
+    margin: 0; /* Remove margin on mobile */
   }
 
   .suggestions-header {

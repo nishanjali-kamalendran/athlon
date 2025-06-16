@@ -210,10 +210,9 @@
 
 /* Footer Logo */
 .footer-logo {
-  width: 400px;  /* Make logo bigger */
+  width: 400px; 
   height: auto;
   margin-left: -150px;
-  margin-bottom: 350px;
   
 }
 

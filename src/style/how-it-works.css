@@ -11,7 +11,7 @@
 
 .main-container {
   height: 100vh;
-  padding: 16px 5rem; /* changed padding */
+  padding: 16px 5rem; /* Base padding */
   overflow: hidden;
   animation: fadeIn 0.8s ease-out forwards;
 }
@@ -19,7 +19,7 @@
 .content-wrapper {
   height: calc(100vh - 32px);
   max-height: 900px;
-  margin: 0 5rem; /* changed margin */
+  margin: 0 5rem; /* Base margin */
   padding: 0 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -554,13 +554,12 @@
 
 @media (max-width: 768px) {
   .main-container {
-    padding: 24px 16px;
+    padding: 16px 1rem; /* Reduced padding on mobile */
   }
 
   .content-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 20px;
+    margin: 0; /* Remove margin on mobile */
+    padding: 0;
   }
 
   .left-section,
