@@ -31,21 +31,35 @@ const App = () => {
                 setMobileMenuOpen={setMobileMenuOpen}
             />
 
-            <HeroSection
-                heroRef={heroRef}
-                scrollY={scrollY}
-            />
-            <About/>
+            <div id="home">
+                <HeroSection
+                    heroRef={heroRef}
+                    scrollY={scrollY}
+                />
+            </div>
 
-            <HowItWorksSection
-                activeSection={activeSection}
-                setActiveSection={setActiveSection}
-            />
+            <div id="about">
+                <About/>
+            </div>
+
+            <div id="howitworks">
+                <HowItWorksSection
+                    activeSection={activeSection}
+                    setActiveSection={setActiveSection}
+                />
+            </div>
+
             <Suggestions/>
-            <Features />
+
+            <div id="features">
+                <Features />
+            </div>
             
             <Download />
-            <ContactSection />
+
+            <div id="contact">
+                <ContactSection />
+            </div>
 
             <Footer />
         </div>
