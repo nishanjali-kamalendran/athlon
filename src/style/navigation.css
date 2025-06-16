@@ -178,7 +178,7 @@
 /* Coming Soon Button Styles */
 .coming-soon-button {
   background: linear-gradient(135deg, #050e22 0%, #050e22 50%, #050e22 100%);
-  border: 2px solid #ffffff;
+  border: none;
   border-radius: 12px;
   padding: 10px 24px;
   color: #ffffff;
