@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-// Add import for logo image
 import logo from '../assets/texttrans.png';
 
 const Navigation = () => {
@@ -94,7 +93,7 @@ const Navigation = () => {
     { name: 'About', href: '#about' },
     { name: 'Features', href: '#features' },
     { name: 'How It Works', href: '#howitworks' },
-    { name: 'Demo', href: '#demo' },
+    { name: 'Demo', href: '/demo' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -114,7 +113,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
     setActiveDropdown(null);
     
-    // Smooth scroll to section
+    // Only do smooth scroll for hash links
     if (href.startsWith('#')) {
       event.preventDefault();
       const element = document.querySelector(href);
@@ -126,6 +125,7 @@ const Navigation = () => {
         });
       }
     }
+    // Non-hash links will navigate normally
   };
 
   const handleCTAClick = () => {
