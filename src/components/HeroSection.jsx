@@ -12,7 +12,7 @@ const HeroSection = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
 
   // Update launch date to match Navigation
-  const launchDate = new Date('2024-03-01').getTime();
+  const launchDate = new Date('2025-08-01').getTime();
 
   // Add resize listener
   useEffect(() => {

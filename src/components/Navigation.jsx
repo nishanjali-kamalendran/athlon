@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 // Add import for logo image
 import logo from '../assets/texttrans.png';
 
-
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,21 +34,21 @@ const Navigation = () => {
   }, []);
 
   useEffect(() => {
-    const launchDate = new Date('2024-03-01').getTime();
-
+    // Updated to a future date - you can change this to your actual launch date
+    const launchDate = new Date('2025-08-01').getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const difference = launchDate - now;
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
-
-      if (difference < 0) {
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
         clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
@@ -130,7 +129,7 @@ const Navigation = () => {
           ))}
         </ul>
 
-        {/* Replace CTA Button with countdown */}
+        {/* Fixed countdown with dark navy blue numbers */}
         <div className="navbar-cta">
           <div className="countdown-container nav-countdown">
             <div className="countdown-timer">
