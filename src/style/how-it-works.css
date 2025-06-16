@@ -79,7 +79,7 @@
 
 .step-indicator {
   position: relative;
-  color: #60a5fa;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -123,7 +123,7 @@
 
 .step-desc {
   font-size: 12px;
-  color: #93c5fd;
+  color: #ffffff;
 }
 
 .step-connector {
@@ -194,7 +194,7 @@
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  color: #93c5fd;
+  color: #ffffff;
   width: 20px;
   height: 20px;
 }
@@ -218,7 +218,7 @@
 }
 
 .search-input::placeholder {
-  color: rgba(191, 219, 254, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .demo-button {
@@ -313,12 +313,12 @@
 }
 
 .court-type {
-  color: #93c5fd;
+  color: #ffffff;
   font-size: 14px;
 }
 
 .court-price {
-  color: #22d3ee;
+  color: #ffffff;
   font-weight: bold;
   font-size: 16px;
 }
@@ -357,7 +357,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #93c5fd;
+  color: #ffffff;
   font-size: 14px;
 }
 
@@ -599,7 +599,7 @@
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 4px 0;
-  background: linear-gradient(135deg, #22d3ee, #3b82f6);
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -715,7 +715,7 @@
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 8px 0;
-  color: #22d3ee;
+  color: #ffffff;
 }
 
 .slide-description {
@@ -731,7 +731,7 @@
   transform: translateY(-50%);
   background: #011330;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #22d3ee;
+  color: #ffffff;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -746,9 +746,9 @@
 
 .nav-arrow:hover {
   background: #01204f;
-  border-color: rgba(34, 211, 238, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
 }
 
 .nav-arrow-left {
@@ -933,4 +933,3 @@
             right: 16px;
           }
         }
-          

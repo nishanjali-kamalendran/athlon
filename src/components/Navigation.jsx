@@ -7,6 +7,12 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +34,30 @@ const Navigation = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const launchDate = new Date('2024-03-01').getTime();
+
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = launchDate - now;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+
+      if (difference < 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const navItems = [
     { name: 'About', href: '/about' },
     { name: 'Features', href: '#features' },
@@ -42,6 +72,11 @@ const Navigation = () => {
   const toggleDropdown = (index, event) => {
     event.preventDefault();
     setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  // Add formatTime helper
+  const formatTime = (time) => {
+    return time.toString().padStart(2, '0');
   };
 
   return (
@@ -95,13 +130,31 @@ const Navigation = () => {
           ))}
         </ul>
 
-        {/* CTA Button */}
+        {/* Replace CTA Button with countdown */}
         <div className="navbar-cta">
-          <button className="cta-button">
-            <span className="cta-text">Coming Soon</span>
-            <div className="cta-glow"></div>
-            <div className="cta-ripple"></div>
-          </button>
+          <div className="countdown-container nav-countdown">
+            <div className="countdown-timer">
+              <div className="time-unit">
+                <span className="time-number">{formatTime(timeLeft.days)}</span>
+                <span className="time-label">Days</span>
+              </div>
+              <div className="time-separator">:</div>
+              <div className="time-unit">
+                <span className="time-number">{formatTime(timeLeft.hours)}</span>
+                <span className="time-label">Hours</span>
+              </div>
+              <div className="time-separator">:</div>
+              <div className="time-unit">
+                <span className="time-number">{formatTime(timeLeft.minutes)}</span>
+                <span className="time-label">Minutes</span>
+              </div>
+              <div className="time-separator">:</div>
+              <div className="time-unit">
+                <span className="time-number">{formatTime(timeLeft.seconds)}</span>
+                <span className="time-label">Seconds</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Mobile Menu Toggle */}

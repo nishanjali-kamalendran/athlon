@@ -41,7 +41,7 @@ const About = () => {
   ];
 
   return (
-    <div className="about-container">
+    
       <div className="about-hero">
         <div className="hero-content">
           <h1 className="hero-title">{text}<span className="cursor">|</span></h1>
@@ -52,20 +52,7 @@ const About = () => {
           </p>
         </div>
       </div>
-
-      <div className="about-content">
-        {sections.map((section) => (
-          <div key={section.id} className="about-section">
-            <div className="section-content">
-              <div className="section-text">
-                <h2 className="section-title">{section.title}</h2>
-                <p className="section-description">{section.content}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+  
   );
 };
 

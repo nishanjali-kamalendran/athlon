@@ -9,35 +9,41 @@ const HeroSection = () => {
     minutes: 0,
     seconds: 0
   });
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
 
-  // Set your launch date here (example: 3 months from now)
-  const launchDate = new Date();
-  launchDate.setMonth(launchDate.getMonth() + 3);
-  launchDate.setDate(15); // 15th of the month
-  launchDate.setHours(12, 0, 0, 0); // 12:00 PM
+  // Update launch date to match Navigation
+  const launchDate = new Date('2024-03-01').getTime();
 
+  // Add resize listener
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const distance = launchDate.getTime() - now;
-
-      if (distance > 0) {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 768);
     };
 
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = launchDate - now;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+
+      if (difference < 0) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [launchDate]);
 
   useEffect(() => {
     // Load GSAP and Anime.js dynamically
@@ -171,17 +177,19 @@ const HeroSection = () => {
   return (
     <section className="hero-section" ref={containerRef}>
       <div className="hero-container">
-        {/* Left side - SVG Animation */}
-        <div className="hero-left">
-          <div className="animation-container" id="container">
-            <Soccer1SVG />
+        {/* Only render animation if screen is large enough */}
+        {isLargeScreen && (
+          <div className="hero-left">
+            <div className="animation-container" id="container">
+              <Soccer1SVG />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Right side - Simplified Content */}
         <div className="hero-right">
           <div className="hero-content">
-            <h1 className="hero-title">ATHLON</h1>
+            
             <p className="hero-subtitle">Reserve Your Elite Slot</p>
             
             <div className="sports-platform-text">
@@ -215,12 +223,11 @@ const HeroSection = () => {
             </div>
 
             <button className="hero-cta" onClick={handleCTAClick}>
-              >
+              Explore for more
             </button>
           </div>
         </div>
       </div>
-      
     </section>
   );
 };

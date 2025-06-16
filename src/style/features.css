@@ -1,8 +1,8 @@
 /* live-demo.css */
 
 .live-demo-container {
-  min-height: 100%;
-  padding: 5rem 1rem;
+  min-height: 90vh;
+  padding: 4rem 1rem;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
   overflow-x: hidden;
@@ -30,7 +30,7 @@
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #f8fafc;
   margin-bottom: 1rem;
@@ -96,7 +96,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 1.25rem;
+  padding: 1rem;
   transition: all 0.3s ease;
   position: relative;
   opacity: 0;
@@ -141,12 +141,12 @@
   opacity: 1;
 }
 
-.feature-card.border-blue-400 { color: #60a5fa; }
-.feature-card.border-green-400 { color: #4ade80; }
-.feature-card.border-purple-400 { color: #a78bfa; }
-.feature-card.border-orange-400 { color: #fb923c; }
-.feature-card.border-red-400 { color: #f87171; }
-.feature-card.border-teal-400 { color: #2dd4bf; }
+.feature-card.border-blue-400 { color: #ffffff; }
+.feature-card.border-green-400 { color: #ffffff; }
+.feature-card.border-purple-400 { color: #ffffff; }
+.feature-card.border-orange-400 { color: #ffffff; }
+.feature-card.border-red-400 { color: #ffffff; }
+.feature-card.border-teal-400 { color: #ffffff; }
 
 /* Feature Header */
 .feature-header {
@@ -157,8 +157,8 @@
 }
 
 .icon-container {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -195,7 +195,7 @@
 
 /* Feature Content */
 .feature-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #f8fafc;
   margin-bottom: 0.75rem;
@@ -203,10 +203,10 @@
 }
 
 .feature-description {
+  font-size: 0.9rem;
   color: #cbd5e1;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1.5rem;
-  font-size: 0.95rem;
 }
 
 /* Feature Footer */
@@ -216,12 +216,13 @@
 
 .demo-button {
   width: 100%;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  color: #f8fafc;
+  color: #ffffff;
   font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -314,6 +315,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: linear-gradient(135deg, #010b1c, #94a3b8);
 }
 
 .primary-cta:hover {
