@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../assets/logotrans.png';
 
 const Footer = () => {
   return (
@@ -29,6 +30,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+            <img src={Logo} alt="Athlon Logo" className="footer-logo" />
           </div>
 
           {/* Quick Links */}

@@ -208,6 +208,15 @@
   color: #1e293b;
 }
 
+/* Footer Logo */
+.footer-logo {
+  width: 400px;  /* Make logo bigger */
+  height: auto;
+  margin-left: -150px;
+  margin-bottom: 350px;
+  
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .footer-content {
@@ -255,5 +264,10 @@
   
   .contact-item {
     font-size: 0.9rem;
+  }
+  
+  .footer-logo {
+    width: 160px;
+    margin-left: 0;
   }
 }
