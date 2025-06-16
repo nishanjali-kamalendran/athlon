@@ -506,39 +506,24 @@
     justify-content: flex-start;
     gap: 0;
     height: auto;
-    min-height: 200vh; /* Double height to accommodate scroll */
+    min-height: 100vh; /* Changed from 200vh to 100vh */
     padding: 0;
   }
   
-  .hero-left,
+  .hero-left {
+    display: none; /* Hide the animation container completely */
+  }
+  
   .hero-right {
     flex: none;
     width: 100%;
     margin: 0;
-  }
-  
-  /* Text section appears first and takes full viewport */
-  .hero-right {
-    order: 1;
     min-height: 100vh;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
-  }
-  
-  /* Animation section appears second and takes full viewport */
-  .hero-left {
-    order: 2;
-    min-height: 100vh !important;
-    height: 100vh !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0 !important;
-    margin-left: 0 !important;
-    padding: 0;
   }
   
   .hero-content {
@@ -592,24 +577,18 @@
 /* Mobile phones */
 @media (max-width: 480px) {
   .hero-container {
-    min-height: 200vh;
+    min-height: 100vh; /* Changed from 200vh to 100vh */
     padding: 0;
   }
   
-  /* Text section - full viewport height */
   .hero-right {
     min-height: 100vh;
     height: 100vh;
     padding: 1rem;
   }
   
-  /* Animation section - full viewport height */
   .hero-left {
-    min-height: 100vh !important;
-    height: 100vh !important;
-    margin-top: 0 !important;
-    margin-left: 0 !important;
-    padding: 0;
+    display: none; /* Ensure animation is hidden */
   }
   
   .hero-content {

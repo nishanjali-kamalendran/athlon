@@ -19,7 +19,8 @@ const HeroSection = () => {
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth > 768);
     };
-
+    // Initial check
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -45,7 +46,10 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, [launchDate]);
 
+  // Only load and initialize animations if on large screen
   useEffect(() => {
+    if (!isLargeScreen) return;
+
     // Load GSAP and Anime.js dynamically
     const loadScripts = async () => {
       // Load GSAP
@@ -154,15 +158,13 @@ const HeroSection = () => {
     };
 
     loadScripts();
-
     // Cleanup function
     return () => {
-      // Clean up GSAP timelines if they exist
       if (window.TweenMax) {
         window.TweenMax.killAll();
       }
     };
-  }, []);
+  }, [isLargeScreen]);
 
   const formatTime = (time) => {
     return time.toString().padStart(2, '0');
@@ -177,7 +179,7 @@ const HeroSection = () => {
   return (
     <section className="hero-section" ref={containerRef}>
       <div className="hero-container">
-        {/* Only render animation if screen is large enough */}
+        {/* Only render SVG container if screen is large */}
         {isLargeScreen && (
           <div className="hero-left">
             <div className="animation-container" id="container">
@@ -186,7 +188,7 @@ const HeroSection = () => {
           </div>
         )}
 
-        {/* Right side - Simplified Content */}
+        {/* Right side content */}
         <div className="hero-right">
           <div className="hero-content">
             

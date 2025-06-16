@@ -160,110 +160,44 @@
   background: rgba(10, 22, 40, 0.05);
 }
 
-/* UPDATED COUNTDOWN STYLES WITH SMALLER DIMENSIONS */
-.nav-countdown {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #0a1628;
-  border-radius: 8px;
-  padding: 4px 8px;  /* Increased horizontal padding */
-  height: 32px;
-  display: flex;
-  align-items: center;
-  margin: 0 8px;  /* Increased margin */
-  box-shadow: 0 2px 8px rgba(10, 22, 40, 0.1);
+/* Coming Soon Button Styles */
+.coming-soon-button {
+  background: linear-gradient(135deg, #050e22 0%, #050e22 50%, #050e22 100%);
+  border: 2px solid #ffffff;
+  border-radius: 12px;
+  padding: 10px 24px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 20px rgba(5, 14, 34, 0.4),
+    0 0 20px rgba(5, 14, 34, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.countdown-timer {
-  display: flex;
-  align-items: center;
-  gap: 3px;  /* Increased gap */
+.coming-soon-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #050e22, #050e22, #050e22, #050e22);
+  border-radius: 12px;
+  z-index: -1;
+  animation: button-glow 3s ease-in-out infinite alternate;
 }
 
-.time-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 26px;  /* Increased width */
-  padding: 2px 3px;  /* Increased padding */
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #0a1628;
-  border-radius: 4px;
-  margin: 0 2px;  /* Added margin between units */
-}
-
-.time-number {
-  font-size: 0.75rem;
-  font-weight: 800;
-  line-height: 1;
-  color: #0a1628;  /* Dark navy blue */
-}
-
-.time-label {
-  font-size: 0.45rem;
-  font-weight: 700;
-  line-height: 1;
-  margin-top: 1px;  /* Added small top margin */
-  color: #0a1628;  /* Dark navy blue */
-}
-
-.time-separator {
-  font-size: 0.75rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-top: -1px;
-  padding: 0 2px;  /* Increased padding */
-  min-width: 8px;
-  color: #0a1628;  /* Dark navy blue */
-}
-
-/* Mobile Countdown Adjustments */
-@media (max-width: 768px) {
-  .nav-countdown {
-    padding: 2px 4px;
-    height: 28px;
-    margin: 0 3px;
+@keyframes button-glow {
+  0% {
+    box-shadow: 0 0 20px rgba(5, 14, 34, 0.5);
   }
-
-  .time-unit {
-    min-width: 20px;
-    padding: 0px 1px;
-  }
-
-  .time-number {
-    font-size: 0.7rem;
-  }
-
-  .time-label {
-    font-size: 0.4rem;
-  }
-
-  .time-separator {
-    font-size: 0.7rem;
-    min-width: 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav-countdown {
-    padding: 1px 3px;
-    height: 24px;
-  }
-
-  .time-unit {
-    min-width: 18px;
-  }
-
-  .time-number {
-    font-size: 0.65rem;
-  }
-
-  .time-label {
-    font-size: 0.35rem;
-  }
-
-  .time-separator {
-    font-size: 0.65rem;
-    min-width: 4px;
+  100% {
+    box-shadow: 0 0 30px rgba(5, 14, 34, 0.8);
   }
 }
 
@@ -277,7 +211,7 @@
   position: relative;
   padding: 0.75rem 1.75rem;
   background: linear-gradient(135deg, #0f172a, #334155);
-  color: white;
+  color: rgb(3, 3, 3);
   border: none;
   border-radius: 12px;
   font-weight: 600;
@@ -311,7 +245,7 @@
 .hamburger-line {
   width: 24px;
   height: 2px;
-  background: white;
+  background: rgb(0, 0, 0);
   margin: 3px 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 2px;
@@ -422,7 +356,7 @@
   width: 100%;
   padding: 1rem;
   background: linear-gradient(135deg, #0f172a, #334155);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 12px;
   font-weight: 600;
