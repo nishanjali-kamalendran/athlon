@@ -1,10 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, MapPin, Clock, Star, X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
-import pic1 from '../assets/badminton.jpg';
-import pic2 from '../assets/basketball.jpg';
-import pic3 from '../assets/football.jpg';
 
+// Mock useIntersectionObserver hook
+const useIntersectionObserver = (ref, options) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref, options]);
+
+  return isIntersecting;
+};
+
+// Mock images - using colored divs instead of actual images
+const pic1 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmY2NjY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJhZG1pbnRvbiBDb3VydDwvdGV4dD48L3N2Zz4=';
+const pic2 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjZhNmZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJhc2tldGJhbGwgQ291cnQ8L3RleHQ+PC9zdmc+';
+const pic3 = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNjZmZjY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZvb3RiYWxsIENvdXJ0PC90ZXh0Pjwvc3ZnPg==';
 
 const EnhancedSlideshow = () => {
   const courtImages = [
@@ -50,7 +73,7 @@ const EnhancedSlideshow = () => {
         );
         setTimeout(() => setIsTransitioning(false), 500);
       }
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isPlaying, isTransitioning, courtImages.length, isVisible]);
@@ -78,7 +101,6 @@ const EnhancedSlideshow = () => {
 
   return (
     <div className="enhanced-slideshow" ref={slideshowRef}>
-      {/* Header with controls */}
       <div className="slideshow-header">
         <div className="slideshow-title">
           <h3>Our Premium Courts</h3>
@@ -89,7 +111,6 @@ const EnhancedSlideshow = () => {
         </button>
       </div>
 
-      {/* Main slideshow */}
       <div className="slideshow-wrapper">
         <div className="slides-container">
           {courtImages.map((image, index) => (
@@ -118,7 +139,6 @@ const EnhancedSlideshow = () => {
           ))}
         </div>
 
-        {/* Optional navigation arrows */}
         <button onClick={goToPrevious} className="nav-arrow nav-arrow-left">
           <ChevronLeft size={28} />
         </button>
@@ -133,9 +153,9 @@ const EnhancedSlideshow = () => {
 
 const HowItWorksSection = () => {
   const sectionRef = useRef(null);
-  const searchSectionRef = useRef(null); // Add this ref
+  const searchSectionRef = useRef(null);
   const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.3 });
-  const isSearchVisible = useIntersectionObserver(searchSectionRef, { threshold: 0.3 }); // Add this observer
+  const isSearchVisible = useIntersectionObserver(searchSectionRef, { threshold: 0.3 });
   const [hasStartedDemo, setHasStartedDemo] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
@@ -227,7 +247,6 @@ const HowItWorksSection = () => {
           setSearchTerm(text.slice(0, index));
           index++;
           
-          // When typing is complete, trigger the search
           if (index > text.length) {
             clearInterval(typeInterval);
             simulateSearch(text);
@@ -237,7 +256,7 @@ const HowItWorksSection = () => {
 
       return () => clearInterval(typeInterval);
     }
-  }, [isSearchVisible]); // Change dependency from isVisible to isSearchVisible
+  }, [isSearchVisible]);
 
   const handleCourtClick = (court) => {
     setSelectedCourt(court);
@@ -286,29 +305,6 @@ const HowItWorksSection = () => {
     </div>
   );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth <= 768) {
-        const rightSection = document.querySelector('.right-section');
-        if (rightSection) {
-          const rect = rightSection.getBoundingClientRect();
-          const triggerPoint = window.innerHeight * 0.8; // Increased to 80% of viewport height
-          
-          if (rect.top <= triggerPoint) {
-            rightSection.classList.add('visible');
-          } else {
-            rightSection.classList.remove('visible');
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="main-container" ref={sectionRef}>
       <div className="main-header">
@@ -316,8 +312,7 @@ const HowItWorksSection = () => {
       </div>
 
       <div className="content-wrapper">
-        {/* Left Section - Search Tool */}
-        <div className="left-section" ref={searchSectionRef}> {/* Add ref here */}
+        <div className="left-section" ref={searchSectionRef}>
           <div className="search-results-wrapper">
             <div className="search-section">
               <div className="demo-section">
@@ -405,7 +400,6 @@ const HowItWorksSection = () => {
           </div>
         </div>
 
-        {/* Right Section - Slideshow */}
         <div className="right-section">
           <EnhancedSlideshow />
         </div>
@@ -417,10 +411,9 @@ const HowItWorksSection = () => {
           onClose={() => setShowModal(false)} 
         />
       )}
-
-      
     </div>
   );
 };
 
 export default HowItWorksSection;
+
