@@ -1,7 +1,19 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .main-container {
   height: 100vh;
   padding: 16px;
   overflow: hidden;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .content-wrapper {
@@ -20,6 +32,8 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
 .right-section {
@@ -27,6 +41,8 @@
   padding: 20px;
   display: flex;
   align-items: flex-start;
+  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
 }
 
 .header-and-demo {
@@ -371,8 +387,8 @@
 }
 
 .book-button {
-  background: #050e22;
-  color: white;
+  background: white;
+  color: black;
   padding: 8px 16px;
   border: none;
   border-radius: 8px;
@@ -384,9 +400,10 @@
 }
 
 .book-button:hover {
-  background: #06b6d4;
+  background: black;
+  color: white;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Styles */

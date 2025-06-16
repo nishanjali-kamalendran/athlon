@@ -176,6 +176,27 @@ const HeroSection = () => {
     // Example: scroll to next section, open modal, navigate to form, etc.
   };
 
+  const handleScrollDown = () => {
+    // Smooth scroll to next section
+    const nextSection = document.querySelector('.next-section') || 
+                       document.querySelector('section:nth-of-type(2)') ||
+                       document.querySelector('#about') ||
+                       document.querySelector('#features');
+    
+    if (nextSection) {
+      nextSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // If no specific section found, scroll down by one viewport height
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section className="hero-section" ref={containerRef}>
       <div className="hero-container">
@@ -227,6 +248,20 @@ const HeroSection = () => {
             <button className="hero-cta" onClick={handleCTAClick}>
               Explore for more
             </button>
+
+            {/* Floating Arrow */}
+            <div className="scroll-arrow" onClick={handleScrollDown}>
+              <svg 
+                className="arrow-icon" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 16.5l6-6h-12z"/>
+                <path d="M12 10.5l6-6h-12z"/>
+              </svg>
+              <span className="scroll-text">Scroll Down</span>
+            </div>
+
           </div>
         </div>
       </div>
