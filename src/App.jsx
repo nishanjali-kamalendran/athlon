@@ -55,7 +55,9 @@ const App = () => {
             <div id="features">
                 <Features />
             </div>
-            <Demo />
+            <div id="demo">
+                <Demo />
+            </div>
 
             {/* Uncomment when Price component is ready */}
             {/* <Price /> */}
