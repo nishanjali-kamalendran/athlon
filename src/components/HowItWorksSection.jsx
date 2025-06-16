@@ -146,7 +146,7 @@ const HowItWorksSection = () => {
   const courts = [
     {
       id: 1,
-      name: "Supreme Court Sports Complex",
+      name: "Supreme Court Complex",
       distance: "0.8 km",
       rating: 4.8,
       price: "Rs. 800/hour",
@@ -166,7 +166,7 @@ const HowItWorksSection = () => {
     },
     {
       id: 3,
-      name: "Metropolitan Basketball Arena",
+      name: "Lumbini Basketball Court",
       distance: "1.5 km",
       rating: 4.7,
       price: "Rs. 700/hour",
