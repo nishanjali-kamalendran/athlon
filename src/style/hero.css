@@ -503,27 +503,42 @@
 @media (max-width: 768px) {
   .hero-container {
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
-    height: 100vh;
-    min-height: 100vh;
+    height: auto;
+    min-height: 200vh; /* Double height to accommodate scroll */
     padding: 0;
   }
   
-  .hero-left {
-    display: none; /* Hide animation on small screens */
-  }
-  
+  .hero-left,
   .hero-right {
     flex: none;
     width: 100%;
     margin: 0;
-    padding: 2rem 1rem;
+  }
+  
+  /* Text section appears first and takes full viewport */
+  .hero-right {
+    order: 1;
     min-height: 100vh;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem;
+  }
+  
+  /* Animation section appears second and takes full viewport */
+  .hero-left {
+    order: 2;
+    min-height: 100vh !important;
+    height: 100vh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    padding: 0;
   }
   
   .hero-content {
