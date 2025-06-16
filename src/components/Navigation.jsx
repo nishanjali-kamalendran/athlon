@@ -61,7 +61,12 @@ const Navigation = () => {
     { name: 'About', href: '#about' },
     { name: 'Features', href: '#features' },
     { name: 'How It Works', href: '#howitworks' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
+    { 
+      name: 'Demo', 
+      href: '#suggestions', 
+      
+    }
   ];
 
   const toggleMobileMenu = () => {

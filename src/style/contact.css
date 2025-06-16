@@ -232,9 +232,9 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #ffffff; /* Changed from #3b82f6 */
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1); /* Changed from blue */
 }
 
 .form-group textarea {
@@ -263,9 +263,9 @@
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #94a3b8;
+  background: #ffffff; /* Changed from #94a3b8 */
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4); /* Changed from blue */
 }
 
 .submit-btn:disabled {
