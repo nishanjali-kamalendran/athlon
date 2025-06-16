@@ -285,21 +285,23 @@ const HowItWorksSection = () => {
   );
 
   useEffect(() => {
-    // Add smooth scroll behavior for mobile
     const handleScroll = () => {
       if (window.innerWidth <= 768) {
         const rightSection = document.querySelector('.right-section');
         if (rightSection) {
           const rect = rightSection.getBoundingClientRect();
-          if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            rightSection.style.opacity = '1';
-            rightSection.style.transform = 'translateY(0)';
+          const triggerPoint = window.innerHeight * 0.75; // 75% of viewport height
+          
+          if (rect.top <= triggerPoint) {
+            rightSection.classList.add('visible');
           }
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
