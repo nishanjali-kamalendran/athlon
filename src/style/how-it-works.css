@@ -851,7 +851,7 @@
   transform: translateY(-2px);
 }
 
-/* Mobile Styles - MODIFIED TO SHOW ONLY SLIDESHOW */
+/* Mobile Styles - MODIFIED TO SHOW ONLY SEARCH SECTION */
 @media (max-width: 768px) {
   .main-container {
     padding: 0;
@@ -875,62 +875,71 @@
     display: none;
   }
 
-  /* HIDE LEFT SECTION COMPLETELY ON MOBILE */
+  /* SHOW ONLY LEFT SECTION (SEARCH) ON MOBILE - FULL SCREEN */
   .left-section {
-    display: none !important;
-  }
-
-  /* SHOW ONLY RIGHT SECTION (SLIDESHOW) ON MOBILE */
-  .right-section {
     position: static;
     width: 100%;
     height: 100vh;
-    padding: 0;
+    padding: 16px;
     margin: 0;
     transform: none;
     animation: none;
     opacity: 1;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    max-width: none;
   }
 
-  .enhanced-slideshow {
-    height: 100vh;
-    margin: 0;
-    border: none;
-    border-radius: 0;
+  /* HIDE RIGHT SECTION (SLIDESHOW) COMPLETELY ON MOBILE */
+  .right-section {
+    display: none !important;
+  }
+
+  .search-results-wrapper {
+    height: 100%;
+    flex: 1;
+  }
+
+  .demo-grid {
+    height: 100%;
+    max-width: none;
     width: 100%;
+  }
+
+  .search-section {
+    height: 100%;
+    flex: 1;
+  }
+
+  .demo-section {
+    height: 100%;
+    flex: 1;
+  }
+
+  .results-panel {
+    height: calc(100vh - 200px);
+    flex: 1;
+  }
+
+  .courts-list {
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+  }
+
+  .search-card,
+  .results-card {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-input {
+    width: calc(100% - 40px);
   }
 
   /* HIDE MOBILE NAVIGATION */
   .mobile-navigation {
     display: none !important;
-  }
-
-  .slideshow-header {
-    padding: 16px;
-  }
-
-  .slideshow-title h3 {
-    font-size: 20px;
-  }
-
-  .nav-arrow {
-    width: 48px;
-    height: 48px;
-  }
-
-  .nav-arrow-left {
-    left: 16px;
-  }
-
-  .nav-arrow-right {
-    right: 16px;
-  }
-
-  .progress-container {
-    bottom: 100px;
-    left: 16px;
-    right: 16px;
   }
 
   .modal-grid {
