@@ -555,8 +555,10 @@
 @media (max-width: 768px) {
   .main-container {
     padding: 16px 1rem;
+    min-height: 100vh;
     height: auto;
-    overflow: visible;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .content-wrapper {
@@ -574,7 +576,6 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    position: relative;
   }
 
   .left-section {
@@ -583,16 +584,21 @@
     padding: 0;
     margin: 0;
     width: 100%;
+    margin-top: 0;
   }
 
   .enhanced-slideshow {
-    height: calc(100vh - 80px);
+    height: 100vh;
     margin: 0;
+    border: none;
+    border-radius: 0;
   }
 
   .demo-grid {
     height: calc(100vh - 80px);
     max-width: none;
+    margin: 0;
+    padding: 16px;
   }
 
   .search-results-wrapper {
@@ -603,6 +609,24 @@
   .courts-list {
     max-height: calc(100vh - 300px);
     overflow-y: auto;
+  }
+
+  .search-card,
+  .results-card {
+    margin: 0;
+    height: auto;
+  }
+
+  .results-panel {
+    height: calc(100vh - 200px);
+  }
+
+  /* Remove any margins/padding that might cause overflow */
+  .slideshow-wrapper,
+  .search-section,
+  .demo-section {
+    margin: 0;
+    padding: 0;
   }
 }
 
