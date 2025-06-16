@@ -1,5 +1,3 @@
-
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -853,7 +851,7 @@
   transform: translateY(-2px);
 }
 
-/* Mobile Styles */
+/* Mobile Styles - MODIFIED TO SHOW ONLY SLIDESHOW */
 @media (max-width: 768px) {
   .main-container {
     padding: 0;
@@ -877,36 +875,22 @@
     display: none;
   }
 
-  .left-section,
+  /* HIDE LEFT SECTION COMPLETELY ON MOBILE */
+  .left-section {
+    display: none !important;
+  }
+
+  /* SHOW ONLY RIGHT SECTION (SLIDESHOW) ON MOBILE */
   .right-section {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: static;
     width: 100%;
     height: 100vh;
-    padding: 16px;
+    padding: 0;
     margin: 0;
-    transition: transform 0.3s ease;
+    transform: none;
     animation: none;
     opacity: 1;
-  }
-
-  .left-section {
-    transform: translateX(-100%);
-    padding-bottom: 80px;
-  }
-
-  .left-section.active {
-    transform: translateX(0);
-  }
-
-  .right-section {
-    transform: translateX(100%);
-    padding: 0;
-  }
-
-  .right-section.active {
-    transform: translateX(0);
+    display: block;
   }
 
   .enhanced-slideshow {
@@ -917,31 +901,9 @@
     width: 100%;
   }
 
-  .demo-grid {
-    height: calc(100vh - 160px);
-    max-width: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .search-results-wrapper {
-    height: calc(100vh - 160px);
-    max-height: none;
-  }
-
-  .courts-list {
-    max-height: calc(100vh - 340px);
-    overflow-y: auto;
-  }
-
-  .search-card,
-  .results-card {
-    margin: 0;
-    height: auto;
-  }
-
-  .results-panel {
-    height: calc(100vh - 240px);
+  /* HIDE MOBILE NAVIGATION */
+  .mobile-navigation {
+    display: none !important;
   }
 
   .slideshow-header {
@@ -977,14 +939,6 @@
 
   .court-preview {
     height: 250px;
-  }
-
-  .mobile-navigation {
-    display: block;
-  }
-
-  .search-input {
-    width: calc(100% - 40px);
   }
 }
 
