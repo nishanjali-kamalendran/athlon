@@ -133,7 +133,9 @@ const EnhancedSlideshow = () => {
 
 const HowItWorksSection = () => {
   const sectionRef = useRef(null);
+  const searchSectionRef = useRef(null); // Add this ref
   const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.3 });
+  const isSearchVisible = useIntersectionObserver(searchSectionRef, { threshold: 0.3 }); // Add this observer
   const [hasStartedDemo, setHasStartedDemo] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
@@ -215,7 +217,7 @@ const HowItWorksSection = () => {
   };
 
   useEffect(() => {
-    if (isVisible && !hasStartedDemo) {
+    if (isSearchVisible && !hasStartedDemo) {
       setHasStartedDemo(true);
       const text = "Bambalapity";
       let index = 0;
@@ -235,7 +237,7 @@ const HowItWorksSection = () => {
 
       return () => clearInterval(typeInterval);
     }
-  }, [isVisible]);
+  }, [isSearchVisible]); // Change dependency from isVisible to isSearchVisible
 
   const handleCourtClick = (court) => {
     setSelectedCourt(court);
@@ -308,21 +310,14 @@ const HowItWorksSection = () => {
   }, []);
 
   return (
-    <div 
-      className="main-container" 
-      ref={sectionRef}
-      style={{ 
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        minHeight: '100vh'  // Ensure minimum height
-      }}
-    >
+    <div className="main-container" ref={sectionRef}>
       <div className="main-header">
         <h2 className="main-title">How It Works</h2>
       </div>
 
       <div className="content-wrapper">
         {/* Left Section - Search Tool */}
-        <div className="left-section">
+        <div className="left-section" ref={searchSectionRef}> {/* Add ref here */}
           <div className="search-results-wrapper">
             <div className="search-section">
               <div className="demo-section">
