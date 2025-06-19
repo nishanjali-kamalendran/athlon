@@ -342,22 +342,6 @@ const Navigation = () => {
               )}
             </div>
           ))}
-          
-          <div className="mobile-cta">
-            <button 
-              className="mobile-cta-button"
-              onClick={handleCTAClick}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleCTAClick();
-                }
-              }}
-              aria-label="Get started with our platform"
-            >
-              <span>Get Started</span>
-            </button>
-          </div>
         </div>
       </div>
 
