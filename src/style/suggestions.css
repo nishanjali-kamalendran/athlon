@@ -33,7 +33,7 @@
 
 .suggestions-container {
   max-width: 1400px;
-  margin: 0 5rem; /* Base margin */
+  margin: 0 auto; /* Center container on all screens */
   padding: 0 2rem;
   position: relative;
   z-index: 1;
@@ -565,7 +565,7 @@
   }
 
   .suggestions-container {
-    margin: 0; /* Remove margin on mobile */
+    margin: 0 auto; /* Keep centered, remove side margin */
   }
 
   .suggestions-header {
