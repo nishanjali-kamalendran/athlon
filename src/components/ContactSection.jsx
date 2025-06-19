@@ -130,7 +130,7 @@ const ContactSection = () => {
 
               {/* Subject input */}
               <div className="form-group">
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="title">Subject</label>
                 <input
                   type="text"
                   id="title"
