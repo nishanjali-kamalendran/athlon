@@ -78,4 +78,9 @@
   .hero-description {
     font-size: 1rem;
   }
+
+  .about-container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
 }

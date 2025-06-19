@@ -570,19 +570,23 @@
 
 /* Tablet and small laptop screens */
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
   .hero-container {
     flex-direction: column;
     justify-content: flex-start;
     gap: 0;
-    height: auto;
-    min-height: 100vh; /* Changed from 200vh to 100vh */
+    height: 100vh;
+    min-height: 100vh;
     padding: 0;
+    margin: 0;
   }
-  
   .hero-left {
     display: none; /* Hide the animation container completely */
   }
-  
   .hero-right {
     flex: none;
     width: 100%;
@@ -592,12 +596,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0 1rem; /* Remove bottom padding */
   }
-  
   .hero-content {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0 1rem;
     max-width: 500px;
     width: 100%;
   }
@@ -658,23 +661,28 @@
 
 /* Mobile phones */
 @media (max-width: 480px) {
-  .hero-container {
-    min-height: 100vh; /* Changed from 200vh to 100vh */
+  .hero-section {
+    min-height: 100vh;
     padding: 0;
+    margin: 0;
   }
-  
+  .hero-container {
+    min-height: 100vh;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
   .hero-right {
     min-height: 100vh;
     height: 100vh;
-    padding: 1rem;
+    padding: 1rem 0 0 0;
+    margin: 0;
   }
-  
   .hero-left {
-    display: none; /* Ensure animation is hidden */
+    display: none !important; /* Ensure animation is hidden */
   }
-  
   .hero-content {
-    padding: 1rem;
+    padding: 1rem 0 0 0;
     max-width: 100%;
   }
   
