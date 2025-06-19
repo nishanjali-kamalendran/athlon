@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 // Use the correct EmailJS package
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   // State for form fields
