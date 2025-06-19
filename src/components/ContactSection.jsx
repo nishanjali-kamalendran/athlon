@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-// Change import to the correct package
-import emailjs from 'emailjs-com';
+import React, { useState, useRef } from 'react';
+// Use the correct EmailJS package
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   // State for form fields
@@ -12,6 +12,8 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  // Add a ref for the form
+  const formRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,11 +26,12 @@ const ContactSection = () => {
     setIsSubmitting(true);
     setSubmitStatus('');
 
-    emailjs.send(
-      'service_0xh0e63D',
-      'template_docqtx3',
-      formData,
-      '5j81Sv4zwCQAtsjAG'
+    // Use sendForm for better compatibility
+    emailjs.sendForm(
+      'service_0xh0e63D', // Double-check this ID in your EmailJS dashboard
+      'template_docqtx3', // Double-check this ID in your EmailJS dashboard
+      formRef.current,
+      '5j81Sv4zwCQAtsjAG' // This should be your public key
     ).then(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
@@ -98,7 +101,11 @@ const ContactSection = () => {
 
           {/* Contact form */}
           <div className="contact-form-container">
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form 
+              className="contact-form" 
+              onSubmit={handleSubmit}
+              ref={formRef} // Attach the ref here
+            >
               <div className="form-row">
                 {/* Name input */}
                 <div className="form-group">
