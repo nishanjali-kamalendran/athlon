@@ -859,6 +859,8 @@
     height: auto;
     overflow-y: hidden;
     overflow-x: hidden;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .content-wrapper {
@@ -869,18 +871,19 @@
     height: 100vh;
     max-height: none;
     position: relative;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .main-header {
     display: none;
   }
 
-  /* SHOW ONLY LEFT SECTION (SEARCH) ON MOBILE - FULL SCREEN */
   .left-section {
     position: static;
-    width: 100%;
+    width: 96vw;
     height: 100vh;
-    padding: 16px;
+    padding: 16px 0;
     margin: 0;
     transform: none;
     animation: none;
@@ -888,53 +891,62 @@
     display: flex;
     flex-direction: column;
     max-width: none;
-  }
-
-  /* HIDE RIGHT SECTION (SLIDESHOW) COMPLETELY ON MOBILE */
-  .right-section {
-    display: none !important;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   .search-results-wrapper {
     height: 100%;
     flex: 1;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .demo-grid {
     height: 100%;
     max-width: none;
-    width: 100%;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .search-section {
     height: 100%;
     flex: 1;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .demo-section {
     height: 100%;
     flex: 1;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .results-panel {
     height: calc(100vh - 200px);
     flex: 1;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .courts-list {
     max-height: calc(100vh - 280px);
     overflow-y: auto;
+    width: 96vw;
+    box-sizing: border-box;
   }
 
   .search-card,
   .results-card {
     margin: 0;
-    width: 100%;
+    width: 96vw;
     box-sizing: border-box;
   }
 
   .search-input {
-    width: calc(100% - 40px);
+    width: calc(96vw - 56px);
+    box-sizing: border-box;
   }
 
   /* HIDE MOBILE NAVIGATION */
