@@ -841,4 +841,7 @@
   .animation-container svg {
     height: 70vh; /* Reduce SVG height for laptops */
   }
+  .hero-content {
+    padding-top: 4rem; /* Increased top padding for laptop screens */
+  }
 }
