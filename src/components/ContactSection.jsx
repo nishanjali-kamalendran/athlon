@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
   // State for form fields
@@ -20,6 +21,21 @@ const ContactSection = () => {
       [e.target.name]: e.target.value
     });
   };
+  const sendEmail = (e) => {
+  e.preventDefault();
+
+  emailjs.sendForm(
+    'YOUR_SERVICE_ID',
+    'YOUR_TEMPLATE_ID',
+    e.target,
+    'YOUR_USER_ID'
+  ).then((result) => {
+      console.log(result.text);
+  }, (error) => {
+      console.log(error.text);
+  });
+};
+
 
   // Handle form submission
   const handleSubmit = async (e) => {
