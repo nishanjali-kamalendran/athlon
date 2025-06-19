@@ -27,19 +27,19 @@
   align-items: center;
   position: relative;
   min-height: 900px;
-  margin-left: -5%;
-  margin-top: 50vh; /* Add this to move SVG down */
+  margin-left: -15%;
+  margin-top: 20vh; /* Reduced from 50vh to 20vh for better positioning */
 }
 
 .animation-container {
   width: 100%;
   max-width: 1200px;
-  height: 1000px;
+  height: 900px; /* Reduced from 1000px to 900px */
 }
 
 .animation-container svg {
   width: 65vw;
-  height: 75vh;
+  height: 70vh; /* Reduced from 75vh to 70vh */
   object-fit: contain;
   padding: 0;
   margin: 0;
@@ -826,5 +826,19 @@
 
   .arrow-icon {
     fill: #ffffff;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .hero-left {
+    margin-top: 40vh; /* Reduce margin above SVG for laptops */
+    margin-left: -8%; /* Slightly less negative margin for better centering */
+    min-height: 1000px;
+  }
+  .animation-container {
+    height: 900px; /* Reduce container height for laptops */
+  }
+  .animation-container svg {
+    height: 70vh; /* Reduce SVG height for laptops */
   }
 }
