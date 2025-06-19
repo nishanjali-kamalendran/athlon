@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// Change import to the correct package
 import emailjs from 'emailjs-com';
 
 const ContactSection = () => {
@@ -6,24 +7,19 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    title: '',
     message: ''
   });
-
-  // State for submission status
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
-  // Unified form submission handler using EmailJS
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
@@ -33,18 +29,19 @@ const ContactSection = () => {
       'template_docqtx3',
       formData,
       '5j81Sv4zwCQAtsjAG'
-    ).then((result) => {
-        setIsSubmitting(false);
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        setTimeout(() => setSubmitStatus(''), 3000);
-      }, (error) => {
-        setIsSubmitting(false);
-        setSubmitStatus('error');
-        // Optionally, you can log or display error details
-      });
+    ).then(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', title: '', message: '' });
+      setTimeout(() => setSubmitStatus(''), 3000);
+    }, (error) => {
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+      console.error("EmailJS error:", error);
+    });
   };
 
+  
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
