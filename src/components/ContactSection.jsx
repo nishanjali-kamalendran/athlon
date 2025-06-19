@@ -25,10 +25,10 @@ const ContactSection = () => {
   e.preventDefault();
 
   emailjs.sendForm(
-    'YOUR_SERVICE_ID',
-    'YOUR_TEMPLATE_ID',
+    'service_0xh0e63D',
+    'template_docqtx3',
     e.target,
-    'YOUR_USER_ID'
+    '5j81Sv4zwCQAtsjAG'
   ).then((result) => {
       console.log(result.text);
   }, (error) => {
