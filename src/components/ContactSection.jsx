@@ -28,8 +28,8 @@ const ContactSection = () => {
 
     // Use sendForm for better compatibility
     emailjs.sendForm(
-      'service_0xh0e63D', // Double-check this ID in your EmailJS dashboard
-      'template_docqtx3', // Double-check this ID in your EmailJS dashboard
+      'service_0xh0e63', 
+      'template_docqtx3', 
       formRef.current,
       '5j81Sv4zwCQAtsjAG' // This should be your public key
     ).then(() => {
