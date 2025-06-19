@@ -407,18 +407,51 @@
   gap: 16px;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
+  
 }
 
 .demo-container .booking-details span {
   display: flex;
   align-items: center;
   gap: 4px;
+  
 }
 
 .demo-container .booking-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+  /* Add left margin for pending actions */
+  margin-left: 24px;
+}
+
+
+/* Icon buttons for pending actions */
+.demo-container .icon-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.demo-container .icon-btn.pending-approve {
+  color: #fbbf24;
+}
+
+.demo-container .icon-btn.pending-approve:hover {
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.demo-container .icon-btn.pending-reject {
+  color: #f87171;
+}
+
+.demo-container .icon-btn.pending-reject:hover {
+  background: rgba(239, 68, 68, 0.15);
 }
 
 .demo-container .booking-status {
@@ -819,35 +852,45 @@
 
 .demo-container .booking-actions {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  /* Add left margin for pending actions */
+  margin-left: 24px;
 }
 
-.demo-container .btn-approve,
-.demo-container .btn-reject {
-  padding: 6px 12px;
+.booking-management-row .booking-actions:has(.pending-approve) {
+  margin-left: 24px;
+}
+
+/* Icon buttons for pending actions */
+.demo-container .icon-btn {
+  background: none;
   border: none;
+  padding: 6px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  font-family: inherit;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
 }
 
-.demo-container .btn-approve {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+.demo-container .icon-btn.pending-approve {
+  color: #fbbf24;
 }
 
-.demo-container .btn-reject {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+.demo-container .icon-btn.pending-approve:hover {
+  background: rgba(251, 191, 36, 0.15);
 }
 
-.demo-container .btn-approve:hover,
-.demo-container .btn-reject:hover {
-  transform: translateY(-1px);
+.demo-container .icon-btn.pending-reject {
+  color: #f87171;
 }
+
+.demo-container .icon-btn.pending-reject:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Keep the rest of the booking-management-row styling as is */
 
 /* Analytics */
 .demo-container .analytics-grid {

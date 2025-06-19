@@ -415,8 +415,16 @@ const Demo = () => {
                   {booking.status}
                 </div>
                 <div className="booking-actions">
-                  <button className="btn-approve">Approve</button>
-                  <button className="btn-reject">Reject</button>
+                  {booking.status === 'pending' && (
+                    <>
+                      <button className="icon-btn pending-approve" title="Approve">
+                        <CheckCircle size={20} />
+                      </button>
+                      <button className="icon-btn pending-reject" title="Reject">
+                        <XCircle size={20} />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
