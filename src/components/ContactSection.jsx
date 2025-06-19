@@ -133,9 +133,9 @@ const ContactSection = () => {
                 <label htmlFor="subject">Subject</label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
+                  id="title"
+                  name="title"
+                  value={formData.title}
                   onChange={handleChange}
                   required
                   placeholder="How can we help you?"
