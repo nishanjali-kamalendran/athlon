@@ -21,36 +21,28 @@ const ContactSection = () => {
       [e.target.name]: e.target.value
     });
   };
-  const sendEmail = (e) => {
-  e.preventDefault();
 
-  emailjs.sendForm(
-    'service_0xh0e63D',
-    'template_docqtx3',
-    e.target,
-    '5j81Sv4zwCQAtsjAG'
-  ).then((result) => {
-      console.log(result.text);
-  }, (error) => {
-      console.log(error.text);
-  });
-};
-
-
-  // Handle form submission
+  // Unified form submission handler using EmailJS
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate async form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Clear success message after 3 seconds
-      setTimeout(() => setSubmitStatus(''), 3000);
-    }, 1500);
+    setSubmitStatus('');
+
+    emailjs.send(
+      'service_0xh0e63D',
+      'template_docqtx3',
+      formData,
+      '5j81Sv4zwCQAtsjAG'
+    ).then((result) => {
+        setIsSubmitting(false);
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitStatus(''), 3000);
+      }, (error) => {
+        setIsSubmitting(false);
+        setSubmitStatus('error');
+        // Optionally, you can log or display error details
+      });
   };
 
   return (
@@ -199,6 +191,18 @@ const ContactSection = () => {
                     <polyline points="22,4 12,14.01 9,11.01"/>
                   </svg>
                   Thank you! Your message has been sent successfully.
+                </div>
+              )}
+              {/* Error message */}
+              {submitStatus === 'error' && (
+                <div className="error-message">
+                  {/* Error icon */}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="15" y1="9" x2="9" y2="15"/>
+                    <line x1="9" y1="9" x2="15" y2="15"/>
+                  </svg>
+                  Sorry, there was an error sending your message. Please try again.
                 </div>
               )}
             </form>
